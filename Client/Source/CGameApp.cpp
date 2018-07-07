@@ -4,6 +4,10 @@
 //-----------------------------------------------------------------------------
 #include "..\\Includes\\CGameApp.h"
 
+#pragma warning(disable: 4995)
+#include "..\\Includes\\MeshLoader.h"
+#pragma warning(default: 4995)
+
 CGameApp::CGameApp()
 {
 	// Reset / Clear all required values
@@ -378,79 +382,60 @@ bool CGameApp::BuildObjects()
 	// If there is any object initialized, release them
 	ReleaseObjects();
 
+	objl::Loader objLoader;
+	int nVertexCount = 0;
+
+	bool loadout = objLoader.LoadFile("Dagger\\a119102294.obj");
+
+	if (loadout) {
+		for (size_t i = 0; i < objLoader.LoadedMeshes.size(); i++)
+		{
+			objl::Mesh curMesh = objLoader.LoadedMeshes[i];
+			nVertexCount = curMesh.Vertices.size();
+		}
+	}
+
 	// Get settings here for software vertex processing
 	hRet = m_pD3DDevice->CreateVertexBuffer(
-		sizeof(CVertex) * 36, ulUsage,
+		sizeof(CVertex) * nVertexCount, ulUsage,
 		D3DFVF_XYZ | D3DFVF_DIFFUSE, D3DPOOL_MANAGED,
 		&m_pVertexBuffer, nullptr
 	);
 	if (FAILED(hRet)) return false;
 
-	hRet = m_pVertexBuffer->Lock(0, sizeof(CVertex) * 36, (void**)&pVertex, 0);
+	hRet = m_pVertexBuffer->Lock(0, sizeof(CVertex) * nVertexCount, (void**)&pVertex, 0);
 	if (FAILED(hRet)) return false;
 
-	// Front Face
-	*pVertex++ = CVertex(-2, 2, -2, RANDOM_COLOR);
-	*pVertex++ = CVertex(2, 2, -2, RANDOM_COLOR);
-	*pVertex++ = CVertex(2, -2, -2, RANDOM_COLOR);
-
-	*pVertex++ = CVertex(-2, 2, -2, RANDOM_COLOR);
-	*pVertex++ = CVertex(2, -2, -2, RANDOM_COLOR);
-	*pVertex++ = CVertex(-2, -2, -2, RANDOM_COLOR);
-
-	// Top Face
-	*pVertex++ = CVertex(-2, 2, 2, RANDOM_COLOR);
-	*pVertex++ = CVertex(2, 2, 2, RANDOM_COLOR);
-	*pVertex++ = CVertex(2, 2, -2, RANDOM_COLOR);
-
-	*pVertex++ = CVertex(-2, 2, 2, RANDOM_COLOR);
-	*pVertex++ = CVertex(2, 2, -2, RANDOM_COLOR);
-	*pVertex++ = CVertex(-2, 2, -2, RANDOM_COLOR);
-
-	// Back Face
-	*pVertex++ = CVertex(-2, -2, 2, RANDOM_COLOR);
-	*pVertex++ = CVertex(2, -2, 2, RANDOM_COLOR);
-	*pVertex++ = CVertex(2, 2, 2, RANDOM_COLOR);
-
-	*pVertex++ = CVertex(-2, -2, 2, RANDOM_COLOR);
-	*pVertex++ = CVertex(2, 2, 2, RANDOM_COLOR);
-	*pVertex++ = CVertex(-2, 2, 2, RANDOM_COLOR);
-
-	// Bottom Face
-	*pVertex++ = CVertex(-2, -2, -2, RANDOM_COLOR);
-	*pVertex++ = CVertex(2, -2, -2, RANDOM_COLOR);
-	*pVertex++ = CVertex(2, -2, 2, RANDOM_COLOR);
-
-	*pVertex++ = CVertex(-2, -2, -2, RANDOM_COLOR);
-	*pVertex++ = CVertex(2, -2, 2, RANDOM_COLOR);
-	*pVertex++ = CVertex(-2, -2, 2, RANDOM_COLOR);
-
-	// Left Face
-	*pVertex++ = CVertex(-2, 2, 2, RANDOM_COLOR);
-	*pVertex++ = CVertex(-2, 2, -2, RANDOM_COLOR);
-	*pVertex++ = CVertex(-2, -2, -2, RANDOM_COLOR);
-
-	*pVertex++ = CVertex(-2, 2, 2, RANDOM_COLOR);
-	*pVertex++ = CVertex(-2, -2, -2, RANDOM_COLOR);
-	*pVertex++ = CVertex(-2, -2, 2, RANDOM_COLOR);
-
-	// Right Face
-	*pVertex++ = CVertex(2, 2, -2, RANDOM_COLOR);
-	*pVertex++ = CVertex(2, 2, 2, RANDOM_COLOR);
-	*pVertex++ = CVertex(2, -2, 2, RANDOM_COLOR);
-
-	*pVertex++ = CVertex(2, 2, -2, RANDOM_COLOR);
-	*pVertex++ = CVertex(2, -2, 2, RANDOM_COLOR);
-	*pVertex++ = CVertex(2, -2, -2, RANDOM_COLOR);
+	if (loadout) {
+		for (size_t i = 0; i < objLoader.LoadedMeshes.size(); i++)
+		{
+			objl::Mesh curMesh = objLoader.LoadedMeshes[i];
+			
+			//  position, normal, and texture coordinate
+			for (size_t j = 0; j < curMesh.Vertices.size(); j++)
+			{
+				*pVertex++ = CVertex(
+					curMesh.Vertices[j].Position.X,
+					curMesh.Vertices[j].Position.Y,
+					curMesh.Vertices[j].Position.Z,
+					RANDOM_COLOR
+				);
+			}
+		}
+	}
 
 	m_pVertexBuffer->Unlock();
 
 	// Our two objects should reference this vertex buffer
 	m_pObject[0].SetVertexBuffer(m_pVertexBuffer);
+	m_pObject[0].m_nVertexCount = nVertexCount;
 	m_pObject[1].SetVertexBuffer(m_pVertexBuffer);
+	m_pObject[1].m_nVertexCount = nVertexCount;
+
+
 
 	// Set both objects matrices so that they are offset slightly
-	D3DXMatrixTranslation(&m_pObject[0].m_mtxWorld, -3.5f, 2.0f, 14.0f);
+	D3DXMatrixTranslation(&m_pObject[0].m_mtxWorld, 0.0f, 0.0f, 2.0f);
 	D3DXMatrixTranslation(&m_pObject[1].m_mtxWorld, 3.5f, -2.0f, 14.0f);
 
 	return true;
@@ -527,7 +512,7 @@ void CGameApp::FrameAdvance()
 		// Set vertex buffer stream source
 		m_pD3DDevice->SetStreamSource(0, m_pObject[i].m_pVertexBuffer, 0, sizeof(CVertex));
 
-		m_pD3DDevice->DrawPrimitive(D3DPT_TRIANGLELIST, 0, 12);
+		m_pD3DDevice->DrawPrimitive(D3DPT_TRIANGLELIST, 0, m_pObject[i].m_nVertexCount);
     } // Next Object
 
     // End Scene Rendering

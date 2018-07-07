@@ -57,6 +57,7 @@ public:
 
     D3DXMATRIX					m_mtxWorld;             // Objects world matrix
 	LPDIRECT3DVERTEXBUFFER9		m_pVertexBuffer;                // Mesh we are instancing
+	ULONG m_nVertexCount;
 };
 
 #endif // !_COBJECT_H_

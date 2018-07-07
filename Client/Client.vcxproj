@@ -21,6 +21,7 @@
     <ClInclude Include="Includes\CTerrain.h" />
     <ClInclude Include="Includes\CTimer.h" />
     <ClInclude Include="Includes\Main.h" />
+    <ClInclude Include="Includes\MeshLoader.h" />
     <ClInclude Include="Res\afxres.h" />
     <ClInclude Include="Res\resource.h" />
     <ClInclude Include="Res\winres.h" />

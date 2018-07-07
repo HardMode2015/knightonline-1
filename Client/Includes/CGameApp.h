@@ -46,7 +46,7 @@ private:
     D3DXMATRIX              m_mtxProjection;    // Projection matrix
 
 	LPDIRECT3DVERTEXBUFFER9	m_pVertexBuffer;	// Temporary vertex buffer to render
-    CObject                 m_pObject[2];       // Objects storing mesh instances
+    CObject                 m_pObject[3];       // Objects storing mesh instances
     CTimer                  m_Timer;            // Game timer
    
     HWND                    m_hWnd;             // Main window HWND
