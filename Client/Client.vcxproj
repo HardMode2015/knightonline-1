@@ -14,19 +14,20 @@
     <Image Include="Res\WarFare.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Includes\CCamera.h" />
-    <ClInclude Include="Includes\CEngine.h" />
-    <ClInclude Include="Includes\CMesh.h" />
-    <ClInclude Include="Includes\CPlayer.h" />
-    <ClInclude Include="Includes\CTerrainManager.h" />
-    <ClInclude Include="Includes\CTimer.h" />
-    <ClInclude Include="Includes\Main.h" />
-    <ClInclude Include="Includes\Scene\SceneBase.h" />
-    <ClInclude Include="Includes\Scene\SceneCharacterSelect.h" />
-    <ClInclude Include="Includes\Scene\SceneGame.h" />
-    <ClInclude Include="Includes\Scene\SceneLoading.h" />
-    <ClInclude Include="Includes\Scene\SceneLogin.h" />
-    <ClInclude Include="Includes\Scene\SceneNationSelect.h" />
+    <ClInclude Include="Includes\CCamera.hpp" />
+    <ClInclude Include="Includes\CEngine.hpp" />
+    <ClInclude Include="Includes\CMesh.hpp" />
+    <ClInclude Include="Includes\CPlayer.hpp" />
+    <ClInclude Include="Includes\CTerrainManager.hpp" />
+    <ClInclude Include="Includes\CTimer.hpp" />
+    <ClInclude Include="Includes\Elements\CTexture.hpp" />
+    <ClInclude Include="Includes\Main.hpp" />
+    <ClInclude Include="Includes\Scene\SceneBase.hpp" />
+    <ClInclude Include="Includes\Scene\SceneCharacterSelect.hpp" />
+    <ClInclude Include="Includes\Scene\SceneGame.hpp" />
+    <ClInclude Include="Includes\Scene\SceneLoading.hpp" />
+    <ClInclude Include="Includes\Scene\SceneLogin.hpp" />
+    <ClInclude Include="Includes\Scene\SceneNationSelect.hpp" />
     <ClInclude Include="Res\afxres.h" />
     <ClInclude Include="Res\resource.h" />
     <ClInclude Include="Res\winres.h" />
@@ -51,6 +52,7 @@
     <ClCompile Include="Source\CPlayer.cpp" />
     <ClCompile Include="Source\CTerrainManager.cpp" />
     <ClCompile Include="Source\CTimer.cpp" />
+    <ClCompile Include="Source\Elements\CTexture.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Scene\SceneCharacterSelect.cpp" />
     <ClCompile Include="Source\Scene\SceneGame.cpp" />

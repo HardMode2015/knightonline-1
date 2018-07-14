@@ -19,6 +19,9 @@
     <Filter Include="Source Files\Scene">
       <UniqueIdentifier>{686464eb-b841-4a48-b6bd-c71c34a5f52e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Elements">
+      <UniqueIdentifier>{b80dcce6-6edf-43a8-8ce7-4c2fc16cfbbc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Res\WarFare.ico">
@@ -35,44 +38,47 @@
     <ClInclude Include="Res\afxres.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
-    <ClInclude Include="Includes\CTimer.h">
+    <ClInclude Include="Includes\Main.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Includes\Main.h">
+    <ClInclude Include="Includes\CTimer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Includes\CCamera.h">
+    <ClInclude Include="Includes\CTerrainManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Includes\CPlayer.h">
+    <ClInclude Include="Includes\CPlayer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Includes\CEngine.h">
+    <ClInclude Include="Includes\CMesh.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Includes\CTerrainManager.h">
+    <ClInclude Include="Includes\CEngine.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Includes\CMesh.h">
+    <ClInclude Include="Includes\CCamera.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Includes\Scene\SceneBase.h">
+    <ClInclude Include="Includes\Scene\SceneNationSelect.hpp">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Includes\Scene\SceneLogin.h">
+    <ClInclude Include="Includes\Scene\SceneLogin.hpp">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Includes\Scene\SceneNationSelect.h">
+    <ClInclude Include="Includes\Scene\SceneLoading.hpp">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Includes\Scene\SceneCharacterSelect.h">
+    <ClInclude Include="Includes\Scene\SceneGame.hpp">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Includes\Scene\SceneLoading.h">
+    <ClInclude Include="Includes\Scene\SceneCharacterSelect.hpp">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Includes\Scene\SceneGame.h">
+    <ClInclude Include="Includes\Scene\SceneBase.hpp">
       <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Elements\CTexture.hpp">
+      <Filter>Header Files\Elements</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +148,9 @@
     </ClCompile>
     <ClCompile Include="Source\Scene\SceneNationSelect.cpp">
       <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Elements\CTexture.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
