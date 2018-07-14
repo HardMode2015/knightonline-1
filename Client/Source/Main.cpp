@@ -3,8 +3,8 @@
 // Author: Osein <osein.wtr@gmail.com>
 //-----------------------------------------------------------------------------
 
-#include "../Includes/Main.h"
-#include "../Includes/CEngine.h"
+#include "../Includes/Main.hpp"
+#include "../Includes/CEngine.hpp"
 #include <mmsystem.h>
 
 CEngine m_iEngine;

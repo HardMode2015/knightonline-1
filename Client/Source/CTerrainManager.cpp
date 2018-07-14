@@ -1,4 +1,4 @@
-#include "../Includes/CTerrainManager.h"
+#include "../Includes/CTerrainManager.hpp"
 
 CTerrainManager::CTerrainManager()
 {

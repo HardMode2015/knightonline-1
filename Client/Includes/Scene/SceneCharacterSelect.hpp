@@ -1,8 +1,8 @@
 #ifndef _SCENE_CHARACTER_SELECT_H_
 #define _SCENE_CHARACTER_SELECT_H_
 
-#include "../Main.h"
-#include "SceneBase.h"
+#include "../Main.hpp"
+#include "SceneBase.hpp"
 
 class SceneCharacterSelect : public SceneBase
 {

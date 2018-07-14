@@ -2,7 +2,7 @@
 // File: CTimer.cpp
 // Author: Osein <osein.wtr@gmail.com>
 //-----------------------------------------------------------------------------
-#include "..\\Includes\\CTimer.h"
+#include "..\\Includes\\CTimer.hpp"
 #include <mmsystem.h>
 
 CTimer::CTimer()

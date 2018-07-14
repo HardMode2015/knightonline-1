@@ -1,2 +1,2 @@
-#include "../../Includes/Scene/SceneGame.h"
+#include "../../Includes/Scene/SceneGame.hpp"
 

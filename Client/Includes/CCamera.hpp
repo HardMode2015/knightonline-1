@@ -5,7 +5,7 @@
 #ifndef _CCAMERA_H_
 #define _CCAMERA_H_
 
-#include "Main.h"
+#include "Main.hpp"
 
 class CCamera
 {

@@ -5,7 +5,7 @@
 #ifndef _CTIMER_H_
 #define _CTIMER_H_
 
-#include "Main.h"
+#include "Main.hpp"
 
 const ULONG MAX_SAMPLE_COUNT = 50; // Maximum frame time sample count
 

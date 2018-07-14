@@ -1,2 +1,2 @@
-#include "../../Includes/Scene/SceneCharacterSelect.h"
+#include "../../Includes/Scene/SceneCharacterSelect.hpp"
 

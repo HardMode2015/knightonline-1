@@ -2,7 +2,7 @@
 // File: CObject.cpp
 // Author: Osein <osein.wtr@gmail.com>
 //-----------------------------------------------------------------------------
-#include "../Includes/CMesh.h"
+#include "../Includes/CMesh.hpp"
 
 CMesh::CMesh()
 {

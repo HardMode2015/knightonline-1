@@ -5,7 +5,7 @@
 #ifndef _CTERRAINMANAGER_H_
 #define _CTERRAINMANAGER_H_
 
-#include "Main.h"
+#include "Main.hpp"
 
 struct _N3MapData {
 	float fHeight;

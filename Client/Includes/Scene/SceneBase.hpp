@@ -1,7 +1,7 @@
 #ifndef _SCENE_BASE_H_
 #define _SCENE_BASE_H_
 
-#include "../Main.h"
+#include "../Main.hpp"
 
 class SceneBase
 {

@@ -5,7 +5,7 @@
 #ifndef _CMESH_H_
 #define _CMESH_H_
 
-#include "Main.h"
+#include "Main.hpp"
 
 class CVertex
 {

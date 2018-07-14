@@ -5,12 +5,12 @@
 #ifndef _CENGINE_H_
 #define _CENGINE_H_
 
-#include "Main.h"
-#include "CMesh.h"
-#include "CTimer.h"
-#include "CTerrainManager.h"
-#include "Scene/SceneBase.h"
-#include "Scene/SceneGame.h"
+#include "Main.hpp"
+#include "CMesh.hpp"
+#include "CTimer.hpp"
+#include "CTerrainManager.hpp"
+#include "Scene/SceneBase.hpp"
+#include "Scene/SceneGame.hpp"
 
 enum VERTEXPROCESSING_TYPE
 {
