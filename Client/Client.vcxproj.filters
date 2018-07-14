@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Res\directx.ico">
+    <Image Include="Res\WarFare.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
@@ -55,7 +55,28 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Res\Client.aps">
+    <None Include="Res\Cursor_Attack.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Cursor_Click.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\cursor_click1.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Cursor_Normal.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\cursor_normal1.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\cursor1.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\repair0.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\repair1.cur">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

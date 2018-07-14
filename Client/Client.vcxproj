@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Res\directx.ico" />
+    <Image Include="Res\WarFare.ico" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\CCamera.h" />
@@ -27,7 +27,14 @@
     <ClInclude Include="Res\winres.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Res\Client.aps" />
+    <None Include="Res\cursor1.cur" />
+    <None Include="Res\Cursor_Attack.cur" />
+    <None Include="Res\Cursor_Click.cur" />
+    <None Include="Res\cursor_click1.cur" />
+    <None Include="Res\Cursor_Normal.cur" />
+    <None Include="Res\cursor_normal1.cur" />
+    <None Include="Res\repair0.cur" />
+    <None Include="Res\repair1.cur" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Res\Client.rc" />

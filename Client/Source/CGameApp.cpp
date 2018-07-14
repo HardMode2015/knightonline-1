@@ -78,8 +78,8 @@ bool CGameApp::CreateDisplay()
 	wc.cbClsExtra = 0;
 	wc.cbWndExtra = 0;
 	wc.hInstance = (HINSTANCE)GetModuleHandle(nullptr);
-	wc.hIcon = LoadIcon(wc.hInstance, MAKEINTRESOURCE(IDI_ICON));
-	wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
+	wc.hIcon = LoadIcon(wc.hInstance, MAKEINTRESOURCE(WIDI_ICON));
+	wc.hCursor = LoadCursor(wc.hInstance, MAKEINTRESOURCE(WIDC_DEFAULT));
 	wc.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
 	wc.lpszMenuName = nullptr;
 	wc.lpszClassName = WindowTitle;
@@ -87,7 +87,7 @@ bool CGameApp::CreateDisplay()
 
 	// Create the rendering window
 	m_hWnd = CreateWindow(WindowTitle, WindowTitle, WS_OVERLAPPEDWINDOW, CW_USEDEFAULT,
-		CW_USEDEFAULT, Width, Height, nullptr, LoadMenu(wc.hInstance, MAKEINTRESOURCE(IDR_MENU)),
+		CW_USEDEFAULT, Width, Height, nullptr, nullptr,
 		wc.hInstance, this);
 
 	// Bail on error

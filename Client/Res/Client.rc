@@ -1,4 +1,4 @@
-//Microsoft Developer Studio generated resource script.
+// Microsoft Visual C++ generated resource script.
 //
 #include "resource.h"
 
@@ -13,65 +13,32 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.K.) resources
+// English (United States) resources
 
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
-#ifdef _WIN32
-LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
-// Menu
+// Cursor
 //
 
-IDR_MENU MENU DISCARDABLE 
-BEGIN
-    POPUP "&File"
-    BEGIN
-        MENUITEM "E&xit",                       ID_EXIT
-    END
-    POPUP "&Animation"
-    BEGIN
-        POPUP "Object 1"
-        BEGIN
-            MENUITEM "&Rotation",                   ID_ANIM_ROTATION1
-            , CHECKED
-        END
-        POPUP "Object 2"
-        BEGIN
-            MENUITEM "&Rotation",                   ID_ANIM_ROTATION2
-            , CHECKED
-        END
-    END
-END
+WIDC_ATTACK             CURSOR                  "Cursor_Attack.cur"
 
+WIDC_DEFAULT_CLICKED    CURSOR                  "Cursor_Click.cur"
 
-#ifdef APSTUDIO_INVOKED
-/////////////////////////////////////////////////////////////////////////////
-//
-// TEXTINCLUDE
-//
+WIDC_BLUE_CLICKED       CURSOR                  "cursor_click1.cur"
 
-1 TEXTINCLUDE DISCARDABLE 
-BEGIN
-    "resource.h\0"
-END
+WIDC_DEFAULT            CURSOR                  "Cursor_Normal.cur"
 
-2 TEXTINCLUDE DISCARDABLE 
-BEGIN
-    "#include ""afxres.h""\r\n"
-    "\0"
-END
+WIDC_BLUE               CURSOR                  "cursor_normal1.cur"
 
-3 TEXTINCLUDE DISCARDABLE 
-BEGIN
-    "\r\n"
-    "\0"
-END
+WIDC_WRITE              CURSOR                  "cursor1.cur"
 
-#endif    // APSTUDIO_INVOKED
+WIDC_REPAIR             CURSOR                  "repair0.cur"
+
+WIDC_REPAIR_CLICKED     CURSOR                  "repair1.cur"
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -81,10 +48,45 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_ICON                ICON    DISCARDABLE     "directx.ico"
+WIDI_ICON               ICON                    "WarFare.ico"
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
 
 
-#endif    // English (U.K.) resources
+/////////////////////////////////////////////////////////////////////////////
+// English (United Kingdom) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United Kingdom) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
