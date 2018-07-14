@@ -10,7 +10,6 @@
 #define WIDC_WRITE                      119
 #define WIDC_REPAIR                     120
 #define WIDC_REPAIR_CLICKED             121
-#define IDI_ICON1                       122
 #define WIDI_ICON                       122
 
 // Next default values for new objects

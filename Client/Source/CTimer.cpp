@@ -3,6 +3,7 @@
 // Author: Osein <osein.wtr@gmail.com>
 //-----------------------------------------------------------------------------
 #include "..\\Includes\\CTimer.h"
+#include <mmsystem.h>
 
 CTimer::CTimer()
 {

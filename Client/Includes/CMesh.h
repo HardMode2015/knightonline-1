@@ -2,8 +2,8 @@
 // File: CObject.h
 // Author: Osein <osein.wtr@gmail.com>
 //-----------------------------------------------------------------------------
-#ifndef _COBJECT_H_
-#define _COBJECT_H_
+#ifndef _CMESH_H_
+#define _CMESH_H_
 
 #include "Main.h"
 
@@ -44,20 +44,6 @@ public:
 
 	D3DXVECTOR3 m_BoundsMin;
 	D3DXVECTOR3 m_BoundsMax;
-};
-
-class CObject
-{
-public:
-     CObject(LPDIRECT3DVERTEXBUFFER9 pVertexBuffer);
-	 CObject();
-	 virtual ~CObject();
-
-	 void SetVertexBuffer(LPDIRECT3DVERTEXBUFFER9 pVertexBuffer);
-
-    D3DXMATRIX					m_mtxWorld;             // Objects world matrix
-	LPDIRECT3DVERTEXBUFFER9		m_pVertexBuffer;                // Mesh we are instancing
-	ULONG m_nVertexCount;
 };
 
 #endif // !_COBJECT_H_

@@ -15,13 +15,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\CCamera.h" />
-    <ClInclude Include="Includes\CGameApp.h" />
-    <ClInclude Include="Includes\CObject.h" />
+    <ClInclude Include="Includes\CEngine.h" />
+    <ClInclude Include="Includes\CMesh.h" />
     <ClInclude Include="Includes\CPlayer.h" />
-    <ClInclude Include="Includes\CTerrain.h" />
+    <ClInclude Include="Includes\CTerrainManager.h" />
     <ClInclude Include="Includes\CTimer.h" />
     <ClInclude Include="Includes\Main.h" />
-    <ClInclude Include="Includes\MeshLoader.h" />
+    <ClInclude Include="Includes\Scene\SceneBase.h" />
+    <ClInclude Include="Includes\Scene\SceneCharacterSelect.h" />
+    <ClInclude Include="Includes\Scene\SceneGame.h" />
+    <ClInclude Include="Includes\Scene\SceneLoading.h" />
+    <ClInclude Include="Includes\Scene\SceneLogin.h" />
+    <ClInclude Include="Includes\Scene\SceneNationSelect.h" />
     <ClInclude Include="Res\afxres.h" />
     <ClInclude Include="Res\resource.h" />
     <ClInclude Include="Res\winres.h" />
@@ -41,12 +46,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\CCamera.cpp" />
-    <ClCompile Include="Source\CGameApp.cpp" />
-    <ClCompile Include="Source\CObject.cpp" />
+    <ClCompile Include="Source\CEngine.cpp" />
+    <ClCompile Include="Source\CMesh.cpp" />
     <ClCompile Include="Source\CPlayer.cpp" />
-    <ClCompile Include="Source\CTerrain.cpp" />
+    <ClCompile Include="Source\CTerrainManager.cpp" />
     <ClCompile Include="Source\CTimer.cpp" />
     <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Scene\SceneCharacterSelect.cpp" />
+    <ClCompile Include="Source\Scene\SceneGame.cpp" />
+    <ClCompile Include="Source\Scene\SceneLoading.cpp" />
+    <ClCompile Include="Source\Scene\SceneLogin.cpp" />
+    <ClCompile Include="Source\Scene\SceneNationSelect.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -93,7 +103,7 @@
       </SDLCheck>
       <ConformanceMode>false</ConformanceMode>
       <AdditionalIncludeDirectories>$(DXSDK_DIR)Include</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN</PreprocessorDefinitions>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>..\Compiled\Debug\Client.pch</PrecompiledHeaderOutputFile>

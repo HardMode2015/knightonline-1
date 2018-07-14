@@ -2,7 +2,7 @@
 // File: CObject.cpp
 // Author: Osein <osein.wtr@gmail.com>
 //-----------------------------------------------------------------------------
-#include "..\\Includes\\CObject.h"
+#include "../Includes/CMesh.h"
 
 CMesh::CMesh()
 {
@@ -147,29 +147,4 @@ HRESULT CMesh::BuildBuffers(LPDIRECT3DDEVICE9 pD3DDevice, bool HardwareTnL, bool
 	} // End if ReleaseOriginals
 
 	return S_OK;
-}
-
-CObject::CObject()
-{
-    m_pVertexBuffer = nullptr;
-    D3DXMatrixIdentity( &m_mtxWorld );
-}
-
-CObject::CObject( LPDIRECT3DVERTEXBUFFER9 pVertexBuffer ) : CObject()
-{
-    m_pVertexBuffer = pVertexBuffer;
-	m_pVertexBuffer->AddRef();
-}
-
-CObject::~CObject()
-{
-	if (m_pVertexBuffer) m_pVertexBuffer->Release();
-	m_pVertexBuffer = nullptr;
-}
-
-void CObject::SetVertexBuffer(LPDIRECT3DVERTEXBUFFER9 pVertexBuffer)
-{
-	if (m_pVertexBuffer) m_pVertexBuffer->Release();
-	m_pVertexBuffer = pVertexBuffer;
-	if (m_pVertexBuffer) m_pVertexBuffer->AddRef();
 }
