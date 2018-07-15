@@ -7,6 +7,9 @@
 
 CTimer::CTimer()
 {
+	// Seed the random on start.
+	srand(timeGetTime());
+
 	// Query performance hardware and setup time scaling values
 	if (QueryPerformanceFrequency((LARGE_INTEGER *)&m_PerfFreq)) 
     { 

@@ -80,6 +80,12 @@
     <ClInclude Include="Includes\Elements\CTexture.hpp">
       <Filter>Header Files\Elements</Filter>
     </ClInclude>
+    <ClInclude Include="Includes\CBase.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\DirectXExtensions.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\Cursor_Attack.cur">
@@ -151,6 +157,12 @@
     </ClCompile>
     <ClCompile Include="Source\Elements\CTexture.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scene\SceneBase.cpp">
+      <Filter>Source Files\Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
