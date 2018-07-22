@@ -20,19 +20,14 @@ void CTexture::LoadFromFile(LPTSTR filePath)
 {
 	HANDLE hFile = ::CreateFile(filePath, GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 
-	LPTSTR m_szName = "";
-
 	DWORD dwRWC = 0;
 	int nL = 0;
 	ReadFile(hFile, &nL, 4, &dwRWC, NULL);
+	LPTSTR m_szName = new char[nL];
 	if (nL > 0)
 	{
-		//std::vector<char> buffer(nL + 1, NULL);
-		//ReadFile(hFile, &buffer[0], nL, &dwRWC, NULL);
-		//m_szName = &buffer[0];
+		ReadFile(hFile, m_szName, nL, &dwRWC, NULL);
 	}
-
-	dwRWC = 0;
 
 	__DXT_HEADER HeaderOrg; // 헤더를 저장해 놓고..
 	ReadFile(hFile, &HeaderOrg, sizeof(HeaderOrg), &dwRWC, NULL); // 헤더를 읽는다..

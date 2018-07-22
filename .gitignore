@@ -2,3 +2,7 @@
 /Compiled
 .DS_Store
 ._.DS_Store
+/Client/UI/*.*
+/Client/UI_ch/*.*
+/Client/UI_en/*.*
+/Client/UI_tw/*.*

@@ -72,7 +72,7 @@ void CEngine::AdvanceFrame()
 	s_pSceneManager->TickActive();
 
 	// Clear the frame & depth buffer ready for drawing
-	s_lpD3DDev->Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0xFFFFFFFF, 1.0f, 0);
+	s_lpD3DDev->Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0x00000000, 1.0f, 0);
 
 	// Begin Scene Rendering
 	s_lpD3DDev->BeginScene();

@@ -30,6 +30,7 @@
     <ClInclude Include="Includes\Scene\SceneLoading.hpp" />
     <ClInclude Include="Includes\Scene\SceneLogin.hpp" />
     <ClInclude Include="Includes\Scene\SceneNationSelect.hpp" />
+    <ClInclude Include="Includes\UI\CUIBase.hpp" />
     <ClInclude Include="Res\afxres.h" />
     <ClInclude Include="Res\resource.h" />
     <ClInclude Include="Res\winres.h" />

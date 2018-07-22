@@ -22,6 +22,15 @@
     <Filter Include="Header Files\Elements">
       <UniqueIdentifier>{b80dcce6-6edf-43a8-8ce7-4c2fc16cfbbc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{3c05aea7-ac62-47ef-9712-32dd7aecdce9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Elements">
+      <UniqueIdentifier>{16a21d22-294f-4169-8e76-430dbad1e3ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{21052b23-1730-4015-8c54-9e7f27749be1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Res\WarFare.ico">
@@ -85,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="Includes\DirectXExtensions.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\UI\CUIBase.hpp">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -155,14 +167,14 @@
     <ClCompile Include="Source\Scene\SceneNationSelect.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Elements\CTexture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\CBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Scene\SceneBase.cpp">
       <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Elements\CTexture.cpp">
+      <Filter>Source Files\Elements</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
