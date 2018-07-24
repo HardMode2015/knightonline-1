@@ -89,8 +89,9 @@ void SceneLogin::Init()
 	fread(&iPC, sizeof(iPC), 1, hOgre);
 	if (iPC > 0) {
 		// part allocation
+		FILE * partFile;
 
-		for (int i = 0; i < iPC; i++)
+		for (int i = 0; i < 1; i++)
 		{
 			nL = 0;
 			fread(&nL, sizeof(nL), 1, hOgre);
@@ -98,11 +99,132 @@ void SceneLogin::Init()
 			{
 				fread(&szFN, nL, 1, hOgre);
 				szFN[nL] = NULL;
-				//m_Parts[i]->LoadFromFile(szFN);
+
+				partFile = fopen(szFN, "rb");
+
+				fread(&nL, sizeof(nL), 1, partFile);
+				if (nL > 0)
+				{
+					fread(szFN, nL, 1, partFile);
+					szFN[nL] = NULL;
+				}
+
+				fread(&nL, sizeof(nL), 1, partFile);
+				__Material partMaterial;
+				fread(&partMaterial, sizeof(partMaterial), 1, partFile);
+
+				fread(&nL, sizeof(nL), 1, partFile);
+				if (nL > 0)
+				{
+					// texture name
+					fread(szFN, nL, 1, partFile);
+					szFN[nL] = NULL;
+
+					cOgreFaceTexture = new CTexture();
+					cOgreFaceTexture->LoadFromFile(szFN);
+				}
+
+				fread(&nL, sizeof(nL), 1, partFile);
+				if (nL > 0)
+				{
+					// part model name
+					fread(szFN, nL, 1, partFile);
+					szFN[nL] = NULL;
+					//s_MngSkins.Delete(&m_pSkinsRef);
+					//m_pSkinsRef = s_MngSkins.Get(szFN);
+
+					FILE * skinFile = fopen(szFN, "rb");
+
+					fread(&nL, sizeof(nL), 1, skinFile);
+					if (nL > 0)
+					{
+						// n3skin name
+						fread(szFN, nL, 1, skinFile);
+						szFN[nL] = NULL;
+					}
+
+					fread(&nL, sizeof(nL), 1, skinFile);
+					if (nL > 0)
+					{
+						// n3skin name
+						fread(szFN, nL, 1, skinFile);
+						szFN[nL] = NULL;
+					}
+
+					int nUVC = 0;
+
+					fread(&cOgreFaceFC, sizeof(cOgreFaceFC), 1, skinFile);
+					fread(&cOgreFaceVC, sizeof(cOgreFaceVC), 1, skinFile);
+					fread(&nUVC, sizeof(nUVC), 1, skinFile);
+
+					if (cOgreFaceFC > 0 && cOgreFaceVC > 0)
+					{
+
+						cOgreFaceVertexes = new __VertexXyzNormal[cOgreFaceVC];
+						cOgreFaceIndexes = new WORD[cOgreFaceFC * 3];
+
+						fread(cOgreFaceVertexes, sizeof(__VertexXyzNormal), cOgreFaceVC, skinFile);
+						fread(cOgreFaceIndexes, 2 * 3, cOgreFaceFC, skinFile);
+
+						m_cFaceVertexes = new __VertexT1[cOgreFaceFC * 3];
+					}
+
+					if (nUVC > 0)
+					{
+						cOgreFaceUVs = new float[nUVC];
+						cOgreFaceUVIndices = new WORD[cOgreFaceFC * 3];
+
+						fread(cOgreFaceUVs, 8, nUVC, skinFile);
+						fread(cOgreFaceUVIndices, 2 * 3, cOgreFaceFC, skinFile);
+					}
+
+					int n = 0, nVI = 0, nUVI = 0;
+					if (nUVC > 0)
+					{
+						for (int i = 0; i < cOgreFaceFC; i++)
+						{
+							if (i == cOgreFaceFC - 1) {
+								DBOUT("fasfa");
+							}
+
+							n = i * 3 + 0; nVI = cOgreFaceIndexes[n]; nUVI = cOgreFaceIndexes[n];
+							m_cFaceVertexes[n].Set(cOgreFaceVertexes[nVI].x, cOgreFaceVertexes[nVI].y, cOgreFaceVertexes[nVI].z,
+								cOgreFaceVertexes[nVI].n.x, cOgreFaceVertexes[nVI].n.y, cOgreFaceVertexes[nVI].n.z,
+								cOgreFaceUVs[nUVI], cOgreFaceUVs[nUVI + 1]);
+
+							n = i * 3 + 1; nVI = cOgreFaceIndexes[n]; nUVI = cOgreFaceIndexes[n];
+							m_cFaceVertexes[n].Set(cOgreFaceVertexes[nVI].x, cOgreFaceVertexes[nVI].y, cOgreFaceVertexes[nVI].z,
+								cOgreFaceVertexes[nVI].n.x, cOgreFaceVertexes[nVI].n.y, cOgreFaceVertexes[nVI].n.z,
+								cOgreFaceUVs[nUVI], cOgreFaceUVs[nUVI + 1]);
+
+							n = i * 3 + 2; nVI = cOgreFaceIndexes[n]; nUVI = cOgreFaceIndexes[n];
+							m_cFaceVertexes[n].Set(cOgreFaceVertexes[nVI].x, cOgreFaceVertexes[nVI].y, cOgreFaceVertexes[nVI].z,
+								cOgreFaceVertexes[nVI].n.x, cOgreFaceVertexes[nVI].n.y, cOgreFaceVertexes[nVI].n.z,
+								cOgreFaceUVs[nUVI], cOgreFaceUVs[nUVI + 1]);
+						}
+					}
+					else
+					{
+						for (int i = 0; i < cOgreFaceFC; i++)
+						{
+							n = i * 3 + 0; nVI = cOgreFaceIndexes[n];
+							m_cFaceVertexes[n].Set(cOgreFaceVertexes[nVI], cOgreFaceVertexes[nVI].n, 0, 0);
+
+							n = i * 3 + 1; nVI = cOgreFaceIndexes[n];
+							m_cFaceVertexes[n].Set(cOgreFaceVertexes[nVI], cOgreFaceVertexes[nVI].n, 0, 0);
+
+							n = i * 3 + 2; nVI = cOgreFaceIndexes[n];
+							m_cFaceVertexes[n].Set(cOgreFaceVertexes[nVI], cOgreFaceVertexes[nVI].n, 0, 0);
+						}
+					}
+				}
+
+				fclose(partFile);
 			}
 		}
 	}
 
+	/*
 	fread(&iPC, sizeof(iPC), 1, hOgre);
 	if (iPC > 0) {
 		// plug allocation
@@ -131,6 +253,8 @@ void SceneLogin::Init()
 		fread(&szFN, nL, 1, hOgre);
 		szFN[nL] = NULL;
 	}
+	*/
+	fclose(hOgre);
 
 	// todo: fx plug bytes
 
@@ -183,6 +307,18 @@ void SceneLogin::Render()
 	vLogin[3].Set(0, vp.Height, 0, fRHW, 0xffffffff, 0.005859f, 0.109375f);
 
 	CBase::s_lpD3DDev->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vLogin, sizeof(__VertexTransformed));
+
+	__Matrix44 matProjection;
+	::D3DXMatrixPerspectiveFovLH(&matProjection, D3DXToRadian(45.0f), (float)600 / 800, 0.1f, 256.0f);
+	s_lpD3DDev->SetTransform(D3DTS_PROJECTION, &matProjection);
+
+	__Matrix44 matView;
+	D3DXMatrixLookAtLH(&matView, &__Vector3(5, 5, -10), &__Vector3(0, 0, 0), &__Vector3(0, 1, 0));
+	s_lpD3DDev->SetTransform(D3DTS_VIEW, &matView);
+	
+	CBase::s_lpD3DDev->SetTexture(0, cOgreFaceTexture->Get());
+	CBase::s_lpD3DDev->SetFVF(D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1);
+	CBase::s_lpD3DDev->DrawPrimitiveUP(D3DPT_TRIANGLELIST, cOgreFaceFC, m_cFaceVertexes, sizeof(__VertexT1));
 
 
 	CBase::s_lpD3DDev->SetRenderState(D3DRS_ZWRITEENABLE, dwZWrite);

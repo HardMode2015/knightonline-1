@@ -37,6 +37,15 @@ public:
 private:
 	class CTexture * m_tMoon;
 	class CTexture * m_ptLogin;
+	
+	class CTexture * cOgreFaceTexture = nullptr;
+	__VertexXyzNormal * cOgreFaceVertexes = nullptr;
+	WORD * cOgreFaceIndexes = nullptr;
+	__VertexT1 * m_cFaceVertexes = nullptr;
+	float * cOgreFaceUVs = nullptr;
+	WORD * cOgreFaceUVIndices = nullptr;
+	int cOgreFaceFC = 0;
+	int cOgreFaceVC = 0;
 };
 
 #endif
