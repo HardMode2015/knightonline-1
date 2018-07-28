@@ -98,6 +98,9 @@
     <ClInclude Include="Includes\UI\CUIBase.hpp">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
+    <ClInclude Include="Includes\Elements\CCharPart.h">
+      <Filter>Header Files\Elements</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\Cursor_Attack.cur">
@@ -174,6 +177,9 @@
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Source\Elements\CTexture.cpp">
+      <Filter>Source Files\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Elements\CCharPart.cpp">
       <Filter>Source Files\Elements</Filter>
     </ClCompile>
   </ItemGroup>

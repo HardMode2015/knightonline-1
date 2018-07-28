@@ -4,7 +4,6 @@
 CTexture::CTexture()
 {
 	memset(&m_Header, 0, sizeof(__DXT_HEADER));
-	m_lpTexture = nullptr;
 }
 
 CTexture::~CTexture()
@@ -19,6 +18,11 @@ CTexture::~CTexture()
 void CTexture::LoadFromFile(LPTSTR filePath)
 {
 	HANDLE hFile = ::CreateFile(filePath, GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+	
+	DWORD errorMessageID = ::GetLastError();
+	LPSTR messageBuffer = nullptr;
+	FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
+		NULL, errorMessageID, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPSTR)&messageBuffer, 0, NULL);
 
 	DWORD dwRWC = 0;
 	int nL = 0;
@@ -27,6 +31,7 @@ void CTexture::LoadFromFile(LPTSTR filePath)
 	if (nL > 0)
 	{
 		ReadFile(hFile, m_szName, nL, &dwRWC, NULL);
+		m_szName[nL] = NULL;
 	}
 
 	__DXT_HEADER HeaderOrg; // 헤더를 저장해 놓고..
@@ -83,7 +88,7 @@ void CTexture::LoadFromFile(LPTSTR filePath)
 	this->Create(iWCreate, iHCreate, fmtNew, HeaderOrg.bMipMap); // 서피스 만들고..
 	m_iLOD = iLODPrev;
 
-	if (m_lpTexture == NULL)
+	if (m_lpTexture == nullptr)
 	{
 		DBOUT("Texture not initialized")
 	}
@@ -279,6 +284,8 @@ void CTexture::LoadFromFile(LPTSTR filePath)
 				SetFilePointer(hFile, 256 * 256 * 2, 0, FILE_CURRENT); // 사이즈가 512 보다 클경우 부두용 데이터 건너뛰기..
 		}
 	}
+
+	CloseHandle(hFile);
 }
 
 bool CTexture::Create(int nWidth, int nHeight, D3DFORMAT Format, BOOL bGenerateMipMap)

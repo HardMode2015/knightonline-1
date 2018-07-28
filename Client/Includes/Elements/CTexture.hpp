@@ -32,9 +32,10 @@ public:
 
 	void LoadFromFile(LPTSTR filePath);
 
-protected:
 	__DXT_HEADER m_Header;
-	LPDIRECT3DTEXTURE9 m_lpTexture;
+	LPDIRECT3DTEXTURE9 m_lpTexture = nullptr;
+
+protected:
 
 private:
 

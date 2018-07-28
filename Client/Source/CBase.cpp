@@ -64,8 +64,8 @@ void CBase::InitEngine(HINSTANCE hWndInstance, LPTSTR sCmdLine)
 void CBase::CreateMainWindow(HINSTANCE hWndInstance, LPTSTR sCmdLine)
 {
 	LPTSTR WindowTitle = _T("Initialization");
-	USHORT Width = 800;
-	USHORT Height = 600;
+	USHORT Width = 1024;
+	USHORT Height = 768;
 	RECT   rc;
 
 	// Register the new windows window class.

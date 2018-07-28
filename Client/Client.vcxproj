@@ -22,6 +22,7 @@
     <ClInclude Include="Includes\CTerrainManager.hpp" />
     <ClInclude Include="Includes\CTimer.hpp" />
     <ClInclude Include="Includes\DirectXExtensions.hpp" />
+    <ClInclude Include="Includes\Elements\CCharPart.h" />
     <ClInclude Include="Includes\Elements\CTexture.hpp" />
     <ClInclude Include="Includes\Main.hpp" />
     <ClInclude Include="Includes\Scene\SceneBase.hpp" />
@@ -56,6 +57,7 @@
     <ClCompile Include="Source\CPlayer.cpp" />
     <ClCompile Include="Source\CTerrainManager.cpp" />
     <ClCompile Include="Source\CTimer.cpp" />
+    <ClCompile Include="Source\Elements\CCharPart.cpp" />
     <ClCompile Include="Source\Elements\CTexture.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Scene\SceneBase.cpp" />
@@ -101,7 +103,7 @@
     <OutDir>..\Compiled\Debug\</OutDir>
     <IntDir>..\Compiled\Debug\</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
