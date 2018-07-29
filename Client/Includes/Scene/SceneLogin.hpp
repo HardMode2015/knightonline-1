@@ -41,6 +41,11 @@ private:
 	int m_iOgrePartCount;
 	class CCharPart * m_pOgreParts = nullptr;
 	__Matrix44 m_mOgreWorld;
+
+	D3DLIGHT9 m_iLight1;
+	D3DLIGHT9 m_iLight2;
+	D3DLIGHT9 m_iLight3;
+
 };
 
 #endif

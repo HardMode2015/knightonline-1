@@ -148,6 +148,31 @@ void SceneLogin::Init()
 	// todo: fx plug bytes
 
 	DBOUT("test");
+
+	ZeroMemory(&m_iLight1, sizeof(D3DLIGHT9));
+	ZeroMemory(&m_iLight2, sizeof(D3DLIGHT9));
+	ZeroMemory(&m_iLight3, sizeof(D3DLIGHT9));
+
+	m_iLight1.Type = D3DLIGHT_POINT;
+	m_iLight1.Diffuse = D3DXCOLOR(0.909f, 0.886f, 0.843f, 1.0f);
+	m_iLight1.Position = D3DXVECTOR3(-500.0f, 100.0f, -50.0f);
+	m_iLight1.Direction = D3DXVECTOR3(-1.0f, -1.0f, 0.5f);
+	m_iLight1.Range = 1000000.00;
+	m_iLight1.Attenuation0 = 0.5;
+
+	m_iLight2.Type = D3DLIGHT_POINT;
+	m_iLight2.Diffuse = D3DXCOLOR(0.258f, 0.266f, 0.658f, 0.0f);
+	m_iLight2.Position = D3DXVECTOR3(1000.0f, -300.0f, 50.0f);
+	m_iLight2.Direction = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	m_iLight2.Range = 1000000.00;
+	m_iLight2.Attenuation0 = 1;
+
+	m_iLight3.Type = D3DLIGHT_POINT;
+	m_iLight3.Diffuse = D3DXCOLOR(0.486f, 0.176f, 0.121f, 0.0f);
+	m_iLight3.Position = D3DXVECTOR3(-200.0f, -800.0f, 350.0f);
+	m_iLight3.Direction = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	m_iLight3.Range = 1000000.00;
+	m_iLight3.Attenuation0 = 1;
 }
 
 void SceneLogin::Render()
@@ -189,18 +214,31 @@ void SceneLogin::Render()
 	s_lpD3DDev->SetTransform(D3DTS_VIEW, &matView);
 
 	s_lpD3DDev->SetTransform(D3DTS_WORLD, &m_mOgreWorld);
+	s_lpD3DDev->SetRenderState(D3DRS_LIGHTING, true);
+
+	s_lpD3DDev->SetLight(0, &m_iLight1);
+	s_lpD3DDev->SetLight(1, &m_iLight2);
+	s_lpD3DDev->SetLight(2, &m_iLight3);
+	s_lpD3DDev->LightEnable(0, true);
+	s_lpD3DDev->LightEnable(1, true);
+	s_lpD3DDev->LightEnable(2, true);
 
 	for (int i = 0; i < m_iOgrePartCount; i++) {
 		CBase::s_lpD3DDev->SetFVF(FVF_VNT1);
 		CBase::s_lpD3DDev->SetMaterial(&m_pOgreParts[i].m_pMaterial);
 
-		CBase::s_lpD3DDev->SetTextureStageState(0, D3DTSS_COLOROP, D3DTA_DIFFUSE);
+		CBase::s_lpD3DDev->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE	);
 		CBase::s_lpD3DDev->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
 		CBase::s_lpD3DDev->SetTextureStageState(0, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
 
 		CBase::s_lpD3DDev->SetTexture(0, m_pOgreParts[i].m_pPartTexture->Get());
 		CBase::s_lpD3DDev->DrawPrimitiveUP(D3DPT_TRIANGLELIST, m_pOgreParts[i].m_iFaceCount, m_pOgreParts[i].m_pPartVertexes, sizeof(__VertexT1));
 	}
+
+	s_lpD3DDev->LightEnable(0, FALSE);
+	s_lpD3DDev->LightEnable(1, FALSE);
+	s_lpD3DDev->LightEnable(2, FALSE);
+	s_lpD3DDev->SetRenderState(D3DRS_LIGHTING, false);
 	// OGRE RENDER END
 
 	// LOGIN BOTTOM UI START
