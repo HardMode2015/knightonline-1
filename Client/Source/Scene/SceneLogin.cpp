@@ -192,14 +192,11 @@ void SceneLogin::Render()
 
 	for (int i = 0; i < m_iOgrePartCount; i++) {
 		CBase::s_lpD3DDev->SetFVF(FVF_VNT1);
-		m_pOgreParts[i].m_pMaterial.Diffuse.r = 1.0f;
-		m_pOgreParts[i].m_pMaterial.Diffuse.g = 1.0f;
-		m_pOgreParts[i].m_pMaterial.Diffuse.b = 1.0f;
-		m_pOgreParts[i].m_pMaterial.Diffuse.a = 1.0f;
 		CBase::s_lpD3DDev->SetMaterial(&m_pOgreParts[i].m_pMaterial);
 
-		CBase::s_lpD3DDev->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_SELECTARG1);
+		CBase::s_lpD3DDev->SetTextureStageState(0, D3DTSS_COLOROP, D3DTA_DIFFUSE);
 		CBase::s_lpD3DDev->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+		CBase::s_lpD3DDev->SetTextureStageState(0, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
 
 		CBase::s_lpD3DDev->SetTexture(0, m_pOgreParts[i].m_pPartTexture->Get());
 		CBase::s_lpD3DDev->DrawPrimitiveUP(D3DPT_TRIANGLELIST, m_pOgreParts[i].m_iFaceCount, m_pOgreParts[i].m_pPartVertexes, sizeof(__VertexT1));

@@ -86,11 +86,11 @@ boolean CCharPart::LoadFromFile(LPTSTR szFN)
 
 		if (nUVC > 0)
 		{
-			m_pPartUVs = new float[nUVC];
+			m_pPartUVs = new float[nUVC * 2];
 			m_pPartUVIndexes = new WORD[m_iFaceCount * 3];
 
-			fread(m_pPartUVs, sizeof(float), nUVC, skinFile);
-			fread(m_pPartUVIndexes, sizeof(WORD) * 3, m_iFaceCount, skinFile);
+			fread(m_pPartUVs, sizeof(float), nUVC * 2, skinFile);
+			fread(m_pPartUVIndexes, 2 * 3, m_iFaceCount, skinFile);
 		}
 
 		int n = 0, nVI = 0, nUVI = 0;
@@ -98,20 +98,20 @@ boolean CCharPart::LoadFromFile(LPTSTR szFN)
 		{
 			for (int i = 0; i < m_iFaceCount; i++)
 			{
-				n = i * 3 + 0; nVI = m_pPartIndexes[n]; nUVI = m_pPartIndexes[n];
+				n = i * 3 + 0; nVI = m_pPartIndexes[n]; nUVI = m_pPartUVIndexes[n];
 				m_pPartVertexes[n].Set(m_pnPartVertexes[nVI].x, m_pnPartVertexes[nVI].y, m_pnPartVertexes[nVI].z,
 					m_pnPartVertexes[nVI].n.x, m_pnPartVertexes[nVI].n.y, m_pnPartVertexes[nVI].n.z,
-					m_pPartUVs[nUVI], m_pPartUVs[nUVI + 1]);
+					m_pPartUVs[nUVI * 2], m_pPartUVs[nUVI * 2 + 1]);
 
-				n = i * 3 + 1; nVI = m_pPartIndexes[n]; nUVI = m_pPartIndexes[n];
-				m_pPartVertexes[n].Set(m_pnPartVertexes[nVI].x, m_pnPartVertexes[nVI].y, m_pnPartVertexes[nVI].z,
+				n = i * 3 + 1; nVI = m_pPartIndexes[n]; nUVI = m_pPartUVIndexes[n];
+					m_pPartVertexes[n].Set(m_pnPartVertexes[nVI].x, m_pnPartVertexes[nVI].y, m_pnPartVertexes[nVI].z,
 					m_pnPartVertexes[nVI].n.x, m_pnPartVertexes[nVI].n.y, m_pnPartVertexes[nVI].n.z,
-					m_pPartUVs[nUVI], m_pPartUVs[nUVI + 1]);
+					m_pPartUVs[nUVI * 2], m_pPartUVs[nUVI * 2 + 1]);
 
-				n = i * 3 + 2; nVI = m_pPartIndexes[n]; nUVI = m_pPartIndexes[n];
+				n = i * 3 + 2; nVI = m_pPartIndexes[n]; nUVI = m_pPartUVIndexes[n];
 				m_pPartVertexes[n].Set(m_pnPartVertexes[nVI].x, m_pnPartVertexes[nVI].y, m_pnPartVertexes[nVI].z,
 					m_pnPartVertexes[nVI].n.x, m_pnPartVertexes[nVI].n.y, m_pnPartVertexes[nVI].n.z,
-					m_pPartUVs[nUVI], m_pPartUVs[nUVI + 1]);
+					m_pPartUVs[nUVI * 2], m_pPartUVs[nUVI * 2 + 1]);
 			}
 		}
 		else

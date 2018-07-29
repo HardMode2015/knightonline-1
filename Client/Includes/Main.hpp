@@ -9,6 +9,7 @@
 #include <windows.h>
 #include <tchar.h>
 #include <D3DX9.h>
+#define D3D_DEBUG_INFO
 #include <iostream>
 #include <sstream>
 
